@@ -1,0 +1,12 @@
+{
+  "resourceName": "staticS3Content",
+  "policyUUID": "f08f12b8",
+  "bucketName": "statics3content",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

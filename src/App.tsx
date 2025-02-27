@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css';
 import './App.css'
+import './amplify-config';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,4 +35,6 @@ function App() {
   )
 }
 
-export default App
+export default withAuthenticator(App, {
+  // signUpAttributes: ['email'],
+});

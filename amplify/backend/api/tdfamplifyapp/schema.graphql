@@ -1,0 +1,19 @@
+type ServiceRequest @model @auth(rules: [{ allow: owner }]) {
+  id: ID! @primaryKey
+  caseNumber: String! # Auto-generated UUID
+  name: String!
+  description: String!
+  creationDate: AWSDate!
+  severity: Severity!
+  resolutionDate: AWSDate!
+  reporterName: String!
+  contactEmail: AWSEmail!
+  location: String!
+  owner: String @auth(rules: [{ allow: owner }]) # Only the creator can edit their request
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+}
