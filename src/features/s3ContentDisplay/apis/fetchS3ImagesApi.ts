@@ -8,7 +8,7 @@ const fetchS3ImagesApi = createAsyncThunk('images/fetchS3Images', async (imageNa
       imageNames.map(async (imageName) => {
         const path = `${s3FolderName}/${imageName}`;
         const url = await getUrl({path});
-        console.log('Image URL:', url.url.toString(), url);
+
         return url.url.toString();
       })
     )

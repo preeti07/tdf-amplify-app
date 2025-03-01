@@ -20,6 +20,9 @@
       },
       "api": {
         "tdfamplifyapp": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
       }
     }
   }
