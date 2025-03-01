@@ -19,14 +19,13 @@ const ServiceRequestsPage = () => {
         Service Requests
       </Typography>
 
-      {/* Create Button */}
       <Box display="flex" justifyContent="flex-end" mb={2}>
         <Button variant="contained" color="primary" onClick={() => setIsDrawerOpen(true)}>
           Create Service Request
         </Button>
       </Box>
       <ServiceRequestList />
-      {/* Drawer for Creating Service Requests */}
+
       <Drawer anchor="right" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
         <CreateServiceRequest onClose={onDrawerCloseHandler} />
       </Drawer>

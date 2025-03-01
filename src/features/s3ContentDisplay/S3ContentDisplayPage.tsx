@@ -18,7 +18,6 @@ const S3ContentDisplayPage = () => {
 
   const { imageUrl, loading, error } = useSelector((state: RootState) => state.s3images);
 
-  console.log('imageUrl:', imageUrl);
   useEffect(() => { 
     dispatchRef.current(fetchS3ImagesApi(s3ImagesToGetUrl));
   }, []);
@@ -29,7 +28,6 @@ const S3ContentDisplayPage = () => {
   return (
     <div className={classes.root}>
       <h3>S3 Content Display Page</h3>
-      {/* <img src={imageUrl} alt="Image loaded from S3" /> */}
       {loading ? (
         <p>Loading images...</p>
       ) : (
@@ -38,7 +36,7 @@ const S3ContentDisplayPage = () => {
           spaceBetween={10}
           slidesPerView={4}
           navigation
-          // scrollbar={{ draggable: true }}
+          scrollbar={{ draggable: true }}
           pagination={{ clickable: true }}
           style={{ width: "100%", height: "auto" }}
           breakpoints={{
