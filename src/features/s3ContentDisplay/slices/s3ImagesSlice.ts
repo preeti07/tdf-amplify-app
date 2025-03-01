@@ -1,15 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchS3ImageApi } from '../apis/fetchS3ImageApi';
-// import { getUrl } from '@aws-amplify/storage';
+import { fetchS3ImagesApi } from '../apis/fetchS3ImagesApi';
 
 interface ImageState {
-  imageUrl: string | undefined;
+  imageUrl: string[] | undefined;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: ImageState = {
-  imageUrl: undefined,
+  imageUrl: [],
   loading: false,
   error: null,
 };
@@ -21,21 +20,21 @@ const s3ImagesSlice = createSlice({
   name: 'images',
   initialState,
   reducers: {
-    fetchS3Image: (state, action: PayloadAction<string>) => {
+    fetchS3Image: (state, action: PayloadAction<string[]>) => {
       state.imageUrl = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchS3ImageApi.pending, (state) => {
+      .addCase(fetchS3ImagesApi.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchS3ImageApi.fulfilled, (state, action) => {
+      .addCase(fetchS3ImagesApi.fulfilled, (state, action) => {
         state.loading = false;
         state.imageUrl = action.payload;
       })
-      .addCase(fetchS3ImageApi.rejected, (state, action) => {
+      .addCase(fetchS3ImagesApi.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
